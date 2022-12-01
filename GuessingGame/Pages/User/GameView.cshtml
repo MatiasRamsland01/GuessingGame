@@ -1,0 +1,129 @@
+﻿@page
+
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery antiforgery
+@{
+    var token = antiforgery.GetAndStoreTokens(HttpContext).RequestToken;
+}
+<input type="hidden" id="CSRF" value=@token>
+<input type="hidden" id="ImageId" value=@Model.State.ImageId>
+
+@model GuessingGame.Pages.User.GameViewModel
+
+<div class="container">
+    <div style="display: flex; flex-direction: column; justify-content:center; align-items: center">
+        <div style="position: relative; border: 1px solid; width: max-content">
+            @for (var i = 0; i < Model.Images.Count; i++)
+            {
+                @if (i == 0)
+                {
+                    <img id="firstImg" style="position: relative; top: 0; left: 0;"
+                src="data:image/png;base64, @Model.Images[i]">
+
+                }
+                else
+                {
+                    <img style="position: absolute; top: 0; left: 0;" src="data:image/png;base64, @Model.Images[i]">
+                }
+            }
+            @if (Model.State.GameFinished && Model.State.ProposedSegmentIds.Count() <
+            Math.Floor(Model.State.segmentsInImage / 2.0))
+            {
+                <div id="coverDiv" style="position: absolute; top: 0; left: 0; background-color:red;"></div>
+            }
+        </div>
+        <div class="text-center">
+            @section scripts{
+            <partial name="_ValidationScriptsPartial" />
+            }
+            @if (Model.State.GameFinished && Model.State.GameWon == true)
+            {
+                <h2 style="color: green;"> You won the game </h2>
+                <h4>Leaderboard placement: @Model.LeaderboardPlace</h4>
+            }
+            else if (Model.State.GameFinished && Model.State.GameWon == false)
+            {
+                <h2> You lost the game </h2>
+                <h5 style="color: @Model.info;">@Model.Message</h5>
+            }
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content:center; align-items: center">
+        <div>
+            @*if game state gamefinished is true-->the game is over --> dont display the buttons*@
+            @if (!Model.State.GameFinished)
+            {
+                <form method="post" style="margin: auto;">
+                    <div>
+                        <div class="text-center">
+                            <label for="Guess">
+                                <h5 style="margin-bottom:0;">Guess the Image!</h5>
+                                <h7 style="color: @Model.info; font-size: medium; margin-top:0;">
+                                    (@Model.Message)
+                                </h7>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="text" id="UserGuess" asp-for="@Model.Guess" placeholder="Enter your guess here">
+                            <span asp-validation-for="@Model.Guess" class="text-danger"></span>
+                            <button id="UserGuessButton" type="submit" asp-page-handler="guess"
+                            class="btn btn-success">Guess</button>
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+        @*if game not finished and not all segments shown*@
+        <div style="display: flex; flex-direction: row; justify-content:center; align-items: center; margin-top: 10px">
+            @if (!(Model.State.GameFinished))
+            {
+                <div>
+                    <form method="post" style="margin: auto;">
+                        <button type="submit" class="btn btn-primary" style="margin-right: 5px;"
+                        asp-page-handler="slice">Get
+                            next
+                            slice</button>
+                        <input hidden asp-for="UserGuid" value="@Model.UserGuid">
+                    </form>
+                </div>
+                <div>
+                    <form method="post">
+                        <button style="margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#forfeitModal"
+                        type="button" class="btn btn-danger">Forfeit Game</button>
+                        <div class="modal fade" id="forfeitModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Forfeit game</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Are you sure you want to forfeit the game, all progress will be lost!</h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Back</button>
+                                        <button type="submit" class="btn btn-danger"
+                                        asp-page-handler="forfeit">Forfeit!</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input hidden asp-for="UserGuid" value="@Model.UserGuid">
+                    </form>
+                </div>
+            }
+        </div>
+        @*game is finished*@
+        @if (Model.State.GameFinished)
+        {
+            @*code for user to propose better segments*@
+            <h7>Optional: Click on up to half the image segments which helped you the most to guess the image</h7>
+            <h7>@Model.ProposeNewSegmentsMessage</h7>
+        }
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script defer src="~/js/proposeSegments.js"></script>
+<script defer src="~/js/GuessValidation.js"></script>

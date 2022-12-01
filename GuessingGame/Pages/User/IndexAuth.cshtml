@@ -1,0 +1,93 @@
+﻿@page
+@model GuessingGame.Pages.User.IndexAuthModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@{
+    <div class="text-center">
+        @if (User.Identity is null) {
+            throw new NullReferenceException("User.Identity is null");
+        }
+        <h1 class="display-4">Welcome @User.Identity.Name!</h1>
+    </div>
+    <hr />
+    <form method="post">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-2 w-25 p-3">
+                    <input type="hidden" asp-for="@Model.userGuid" />
+                    <button class="btn btn-success form-control" asp-page-handler="CreateNewGame">Start a new
+                        Game</button>
+                </div>
+                @if (!(Model.gameState is null) && Model.gameFinished == false)
+                {
+                    <div class="col-md-auto p-3">
+                        Or
+                    </div>
+                    <div class="col col-lg-2 w-25 p-3">
+                        <button asp-page-handler="ResumePreviousGame" class="btn btn-primary form-control">Resume
+                            previous
+                            game</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h2>Leaderboard</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Game id</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var game in Model.Leaderboard)
+                        {
+                            <tr>
+                                <td>@game.Id</td>
+                                <td>@game.Username</td>
+                                <td>@game.UncoveredSegments</td>
+                                <td>@game.Date</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm offset-md-1">
+                <h2>Recent Games</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Game id</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var game in Model.RecentGames)
+                        {
+                            <tr>
+                                <td>@game.Id</td>
+                                <td>@game.Username</td>
+                                <td>@game.UncoveredSegments</td>
+                                <td>@game.Date</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+}

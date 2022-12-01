@@ -1,0 +1,76 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GuessingGame
+build_property.RootNamespace = GuessingGame
+build_property.ProjectDir = /Users/matiasramsland/repos/GuessingGame/GuessingGame/
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/matiasramsland/repos/GuessingGame/GuessingGame
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9Mb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/User/CategoryChoice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlci9DYXRlZ29yeUNob2ljZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/User/GameView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlci9HYW1lVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/User/IndexAuth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlci9JbmRleEF1dGguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/User/UploadNewImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlci9VcGxvYWROZXdJbWFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/matiasramsland/repos/GuessingGame/GuessingGame/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-nbz2hyupwi

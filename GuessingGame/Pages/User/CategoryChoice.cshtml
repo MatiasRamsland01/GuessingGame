@@ -1,0 +1,25 @@
+@page
+@model GuessingGame.Pages.User.CategoryChoiceModel
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-5 center-text">
+            <div class="form-group">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <h2 style="margin-bottom: 1em;">Choose category of image: </h2>
+                    <div class="form-group">
+                        <select style="margin-bottom: 1em;" asp-for="category" id="category" class="form-control">
+                            <option value="allcategories">All Categories</option>
+                            <option value="food">Food</option>
+                            <option value="building">Building</option>
+                            <option value="animal">Animal</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <input type="hidden" asp-for="@Model.userGuid" />
+                    <button class="btn btn-success form-control" asp-page-handler="CreateNewGame">Start the
+                        Game</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

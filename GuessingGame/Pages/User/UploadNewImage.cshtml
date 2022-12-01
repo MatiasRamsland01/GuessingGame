@@ -1,0 +1,64 @@
+﻿@page
+@model GuessingGame.Pages.User.UploadNewImageModel
+@{
+    ViewData["Title"] = "Upload Image";
+}
+<div class="text-center">
+    <h5 class="display-4">Upload Image</h5>
+</div>
+<hr />
+  
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-6">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form action="" method="post" enctype="multipart/form-data">
+          <div style="margin-bottom: 1em;" class="form-group">
+            <label for="imageName">Image name</label>
+            <input placeholder="Enter the correct name for the image" type="text" asp-for="uploadImageInfoVM.ImageName"
+              id="imageName" class="form-control" required>
+          </div>
+
+          <div style="margin-bottom: 1em;" class="form-group">
+            <label for="image">Upload image:</label>
+            <input asp-for="uploadImageInfoVM.Image" type="file" id="image" onchange="loadFile(event)"
+              class="form-control-file btn btn-success" required accept="image/*" />
+
+        </div>
+        
+        <div style="margin-bottom: 1em;" class="form-group">
+          <select asp-for="uploadImageInfoVM.Category" id="category" class="form-control" required>
+            <option value="" disabled selected>Select Category</option>
+            <option value="food">Food</option>
+            <option value="building">Building</option>
+            <option value="animal">Animal</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div style="margin-bottom: 1em; padding: 0px" class="form-check">
+          <input asp-for="uploadImageInfoVM.ManualSlice" type="checkbox" id="manualSlice" autocomplete="off">
+          <label for="manualSlice">Slice Manually</label>
+        </div>
+        <input value="" asp-for="uploadImageInfoVM.SlicedImageBase64" id="SlicedImage" hidden/>
+        <input value="" asp-for="uploadImageInfoVM.Colors" id="Colors" hidden/>
+         <div style="margin-bottom: 1em; padding: 0px" class="form-check">
+          <input class="btn btn-success" type="submit" value="Upload" />
+         </div>
+      </form>
+      </div>
+      <div id="containerRange" style="display: none;" class="col-6">
+          <h3>Draw the segments you want</h3> 
+          <label style="" id="labelPenWidth" for="penWidthRange" class="form-label">Pen width</label>
+          <input style="" type="range" class="form-range" min="1" max="60" step="0.1" value="20" id="penWidthRange">
+            @* <canvas id="displayImage" style="position: absolute; top: 0; left: 0;"></canvas> *@
+            <div id="container" style="display: none; border: 1px solid; margin-bottom: 2em"> @* width:550px; height: 550px; *@
+              <img style="display: none; position: relative; bottom: 0px; right: 0px; margin: 0px" id="showImage">
+              <canvas id="canvas"  style="display: none; position: absolute; opacity:0.7;"></canvas>
+            </div>
+          <button onclick="clearImage()" class="btn btn-success">Clear Image</button>
+      </div>
+    </div>
+  </div>
+
+<script src="~/js/ManualSlicing.js" asp-append-version="true"></script>
